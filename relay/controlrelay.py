@@ -22,13 +22,18 @@ pin = val[0:1]
 mode = val[1:2]
 
 #time.sleep(1)
+curPin = 0
 
-curPin = pinList[int(pin)]	
+if pin == "9":
+	print ("ALL MODE")
+else:
+	curPin = pinList[int(pin)]	
+
 #GPIO.setup(curPin, GPIO.OUT) 
 
-#if mode = 1:
+#if mode == 1:
 	#GPIO.output(curPin, GPIO.HIGH)
-#else
+#else:
 	#GPIO.output(curPin, GPIO.LOW)
 	
 	
