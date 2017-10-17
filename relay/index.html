@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home Control</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/bootstrap-theme.min.css">
+  <script src="./js/jquery-1.11.1.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+  
+  <style>
+  
+  </style>
+  
+  <script>
+   //JQuery Functions MothaFuckas!!!
+  $( function() {
+  
+ 
+  $("button").click(function(evt){	 
+		
+	btnName = evt.target.id;
+	
+	if(btnName.substr(0,3) == "btn"){
+		relay = btnName.substr(3,1);
+		mode = btnName.substr(4,1);
+	 
+		$.ajax({url: "controlraspi.php?switch="+ relay +"&mode=" + mode, success: function(result){
+			$("#msg").html(result);	   
+		}});
+		
+	}
+
+	
+});
+  
+  
+  
+  });
+  
+  
+  </script>
+  
+  
+</head>
+<body>
+
+ 
+ 
+ <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Home Controller</a>
+    </div>
+    
+  </div>
+  
+</nav>
+    
+<div class="container"> 	  
+		 <div class="well">	 Component 1
+			 <button type="button" class="btn btn-success" id="btn01"> ON </button>
+			 <button type="button" class="btn btn-danger" id="btn00"> OFF </button> </div>
+		 </div>	  
+</div>
+
+<div class="container"> 	  
+		 <div class="well">	 Component 2
+			 <button type="button" class="btn btn-success" id="btn11"> ON </button>
+			 <button type="button" class="btn btn-danger" id="btn10"> OFF </button> </div>
+		 </div>
+</div>
+
+<div class="container"> 	  
+		 <div class="well">	 Component 2
+			 <button type="button" class="btn btn-success" id="btn21"> ON </button>
+			 <button type="button" class="btn btn-danger" id="btn20"> OFF </button> </div>
+		 </div>
+</div>
+
+
+<div class="container"> 	  
+		 <div class="well">	 Component 2
+			 <button type="button" class="btn btn-success" id="btn31"> ON </button>
+			 <button type="button" class="btn btn-danger" id="btn30"> OFF </button> </div>
+		 </div>
+</div>
+
+
+
+ <div class="container"> 
+<div class="alert alert-success"  style="color:black;">
+  <strong>Status: </strong> <span id="msg"> Waiting for action </span>
+</div>
+</div>
+</body>
+</html>
